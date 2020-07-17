@@ -2,10 +2,8 @@ print('DATA: 04/07/2020')
 print('DISCIPLINA: VISÃO COMPUTACIONAL NO MELHORAMENTO DE PLANTAS')
 print('PROFESSOR: VINÍCIUS QUINTÃO CARNEIRO')
 print('DISCENTE: EWERTON LELYS RESENDE')
-'''
-# print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-')
-print(
-    '###################################################################################################################')
+
+print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-')
 print('REO 01 - LISTA DE EXERCÍCIOS')
 
 print('EXERCÍCIO 01:')
@@ -119,7 +117,7 @@ print("h) Concatene o vetor da letra a com o vetor da letra j.")
 h = np.concatenate((a, seq))
 print('Concatenação de vetore ' + str(h))
 len(h)
-print("Tamanho = " + str(h))
+print("Tamanho = " + str(len(h)))
 print(' ')
 print('-='*100)
 print(' ')
@@ -234,7 +232,7 @@ print(' Os genótipos com prod. maior ou igual a 25 são os ' + str(gen_prod))
 print(' ')
 print('-='*100)
 print(' ')
-
+'''
 print('EXERCÍCIO 03:')
 print('a) Crie uma função em um arquivo externo (outro arquivo .py) para calcular a média e a variância amostral um vetor qualquer, baseada em um loop (for).')
 from função_a import summary
@@ -245,6 +243,8 @@ print('  Sample     Mean     Var')
 np.set_printoptions(precision=2)
 np.set_printoptions(suppress=True)
 print(str(amostra))
+print(' ')
+'''
 print('b) Simule três arrays com a biblioteca numpy de 10, 100, e 1000 valores e com distribuição normal com média 100 '
       'e variância 2500. Pesquise na documentação do numpy por funções de simulação.')
 import math
@@ -262,6 +262,16 @@ print(' ')
 print('c) Utilize a função criada na letra a para obter as médias e variâncias dos vetores simulados na letra b.')
 
 print('d) Crie histogramas com a biblioteca matplotlib dos vetores simulados com valores de 10, 100, 1000 e 100000.')
+font = {'family': 'serif',
+        'color':  'gray',
+        'weight': 'normal',
+        'size': 12,
+        }
+font1 = {'family': 'serif',
+        'color':  'black',
+        'weight': 'normal',
+        'size': 12,
+        }
 import matplotlib.pyplot as plt
 h10 = plt.hist(a_10)
 h100 = plt.hist(a_100)
@@ -271,19 +281,19 @@ h10000 = plt.hist(np.random.normal(100, math.sqrt(2500), 10000))
 fig, axes = plt.subplots(nrows=2, ncols=2)
 ax0, ax1, ax2, ax3 = axes.flatten()
 ax0.hist(a_10, color="tab:red")
-ax0.set_title('n = 10')
+ax0.set_title('n = 10', fontdict=font)
 ax1.hist(a_100, color="tab:orange")
-ax1.set_title('n = 100')
+ax1.set_title('n = 100', fontdict=font)
 ax2.hist(a_1000, color="tab:green")
-ax2.set_title('n = 1000')
+ax2.set_title('n = 1000', fontdict=font)
 ax3.hist(np.random.normal(100, math.sqrt(2500), 10000), color="tab:blue")
-ax3.set_title('n = 10000')
+ax3.set_title('n = 10000', fontdict=font)
 fig.tight_layout()
 plt.show()
 print(' ')
 print('-='*100)
 print(' ')
-'''
+
 print('EXERCÍCIO 04:')
 print("a) O arquivo dados.txt contem a avaliação de genótipos (primeira coluna) em repetições (segunda coluna) quanto a"
     "quatro variáveis (terceira coluna em diante). Portanto, carregue o arquivo dados.txt com a biblioteca numpy, "
@@ -450,7 +460,7 @@ for i in np.arange(0,10,1):
 
 plt.xlabel('Var 2', fontdict=font1)
 plt.ylabel('Var 4', fontdict=font1)
-plt.subplot(2,2,2)
+plt.subplot(2,2,4)
 for i in np.arange(0,10,1):
     plt.scatter(v_c[i,1], v_c[i,3], s=50, alpha=0.8, label = v_c[i,0], c=c[i])
 plt.legend(bbox_to_anchor=(2.08, 0.7), title='Genotypes', borderaxespad=0., ncol=5)
