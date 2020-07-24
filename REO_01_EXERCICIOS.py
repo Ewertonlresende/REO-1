@@ -9,13 +9,13 @@ print('REO 01 - LISTA DE EXERCÍCIOS')
 print('EXERCÍCIO 01:')
 print('a) Declare os valores 43.5,150.30,17,28,35,79,20,99.07,15 como um array numpy.')
 import numpy as np
-
 a = np.array([43.5, 150.30, 17, 28, 35, 79, 20, 99.07, 15])
+print(type(a))
 print(a)
 print(' ')
 
 print('b) Obtenha as informações de dimensão, média, máximo, mínimo e variância deste vetor.')
-dim_01 = len(a)
+dim_01 = len(a) #dimensão!
 print('Dimensão (dim_01): ' + str(dim_01))
 média = np.mean(a)
 print('Média: ' + str(média))
@@ -30,14 +30,14 @@ print(' ')
 print('c) Obtenha um novo vetor em que cada elemento é dado pelo quadrado da diferença entre cada elemento do vetor declarado na letra a e o valor da média deste.')
 média_v = np.mean(a)
 print(média_v)
-b = np.array((a-média_v)**2)
+b = np.array((a-média_v)**2) #subitrai cada valor quando trabalhamos com vetor.
 print('Vetor em que cada elemento é dado pelo quadrado da diferença entre cada elemento = ' + str(b))
 media_b = np.mean(b)
 print('Média deste vetor = ' + str(media_b) + '.Vale resaltar que esta, nada mais é que a variância do vetor a.')
 print(' ')
 
 print('d) Obtenha um novo vetor que contenha todos os valores superiores a 30.')
-d = a > 30
+d = a > 30 #criar um vetor boleano (falso e verdadeiro)!!
 dv = a[d]
 print('Vetor com todos os valores superiores a 30 = ', dv)
 print(' ')
@@ -58,16 +58,16 @@ print('g) Crie uma estrutura de repetição usando o for para apresentar cada va
 # a estrutura de repetição inicia com FOR, seguido de uma variável (valor), in (dentro) da lista;
 # a delimitação de deve a indentação
 # sendo que a cada iteração o (valor) recebe cada elemento da lista.
+
 numero_de_elementos = len(a)
 print(numero_de_elementos)
 lista = list(range(0, len(a), 1))
 print('Lista de posições = ', str(lista))
 it = 0
 for valor in range(0, len(a), 1):  # indica as posicoes dos valores de um vetor que se deseja trabalhar
-    it = it + 1
+    it = it + 1                    # 1 é o passo #len(a) (9) ultimos valor, no range não pega a ultima posição
     print('Posição = ' + str(valor))
-    print('Valor = ' + str(
-        a[int(valor)]))  # int é uma necessidade de tranformar o valor em inteiro, para podermos acessar posiçoes .
+    print('Valor = ' + str(a[int(valor)]))  # int é uma necessidade de tranformar o valor em inteiro, para podermos acessar posiçoes .
     print('-'*51)
 print(" Podemos também utlizar a função ENUMERATE")
 it = 0
@@ -76,6 +76,7 @@ for pos, alt in enumerate(a):  # pega o elemento nossa lista (altura) e a posiç
     print('Iteração: ' + str(it))
     print('Na posição ' + str(pos) + ' há o elemento: ' + str(alt))
     print('-'*51)
+print(list(enumerate(a))) #dentro dos parentes é tupla
 print(' ')
 
 print('h) Crie uma estrutura de repetição usando o for para fazer a soma dos quadrados de cada valor do vetor.')
@@ -85,7 +86,7 @@ vetor = np.zeros(n)
 print(vetor)
 tipo = type(a)
 print(tipo)
-for sq in np.arange(0, 9, 1):
+for sq in np.arange(0, 9, 1): # nesse caso não precisa it!! +=??
     print('Valores_sq = ' + str(a[int(sq)]))
     vetor[int(sq)] = (a[int(sq)])**2
 
@@ -118,6 +119,9 @@ h = np.concatenate((a, seq))
 print('Concatenação de vetore ' + str(h))
 len(h)
 print("Tamanho = " + str(len(h)))
+#outra estratégia
+#usando (np.reshape) axis = 0 coloca um abixo do outro! axis =
+
 print(' ')
 print('-='*100)
 print(' ')
@@ -199,7 +203,7 @@ print('g) Considerando que a primeira coluna seja a identificação de genótipo
       'Obtenha os genótipos que possuem nota de severidade igual ou inferior a 3 e peso de 100 grãos igual ou superior a 22.')
 
 print('Posições das notas de peso de 100 grãos maiores ou igual a 22 = {}. Posições das notas menores que 5 = {}'.format(peso_m_22[0], p_notas_menores_5[0]))
-#g = gen[peso_m_22 & p_notas_menores_5]
+#g = gen[peso_m_22 & p_notas_menores_5] & operador
 #print(g)
 
 print(' ')
@@ -232,19 +236,20 @@ print(' Os genótipos com prod. maior ou igual a 25 são os ' + str(gen_prod))
 print(' ')
 print('-='*100)
 print(' ')
-'''
+
 print('EXERCÍCIO 03:')
 print('a) Crie uma função em um arquivo externo (outro arquivo .py) para calcular a média e a variância amostral um vetor qualquer, baseada em um loop (for).')
-from função_a import summary
-amostra = summary(a, 4, 5)
-print('-'*50)
-print('Resultado:')
-print('  Sample     Mean     Var')
-np.set_printoptions(precision=2)
-np.set_printoptions(suppress=True)
-print(str(amostra))
+#agilizar o processo
+#def usado para criar uma função. somatorio é no nome da função. (vetor) é argumento
+
+import numpy as np
+from Função import média, variancia
+lucro_acoes = np.array([83.6, 118.9, 11.9, 515.0, 19.0, 1460.0])
+print('Lucro de cada ativo = ' +str(lucro_acoes)+' Média de lucro por ação = ' +str (round(média(lucro_acoes),2)) + ' Variância amostral = '+str(round(variancia(lucro_acoes), 2)))
+print('-='*51)
+
 print(' ')
-'''
+
 print('b) Simule três arrays com a biblioteca numpy de 10, 100, e 1000 valores e com distribuição normal com média 100 '
       'e variância 2500. Pesquise na documentação do numpy por funções de simulação.')
 import math
